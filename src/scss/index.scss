@@ -1,0 +1,356 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;700&display=swap');
+
+//VARIABLES
+$bg-light: #f7f7f9;
+$bg-light-component: #fff;
+$color-white: #fff;
+$color-light-grey: #f2f2f2;
+$color-grey-1: #6a6a72;
+$color-grey-1: #797785;
+
+$bg-dark: #171723;
+$bg-dark-component: #25273c;
+
+$bg-color-blue: #517de0;
+
+
+// SCAACSS - Base Rules
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+}
+body{
+  background: $bg-light;
+}
+button{
+  background-color: transparent;
+  appearance: none;
+  border: 0;
+  &:focus{
+    outline: none;
+  }
+}
+input[type='text']{
+  border: 0;
+  background-color: transparent;
+  &:focus{
+    outline: none;
+  }
+}
+
+@mixin icon(){
+  content: '';
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  top:0px;
+  left: 0px;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 50%;
+}
+
+button{
+  &.circle{
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    position: absolute;
+    top: calc(50% - 11px);
+    &.left{
+      left: 20px;  
+      border: 2px solid $color-light-grey;
+      i{
+        &::before{
+          @include icon();
+        }
+        &::after{
+          @include icon();
+        }
+      }
+    }
+    &.right{
+      right: 14px;
+      i::after{
+        @include icon();
+        background-image: url(../assets/images/icon-cross.svg);
+      }
+    }
+    
+  }
+}
+
+
+.completed  {
+  border: none;
+  button.left i{
+    &::before{
+      background-image: linear-gradient(180deg, #2af598 0%, #009efd 100%);
+    }
+    &::after{
+      background-image: url(../assets/images/icon-check.svg);
+    }
+  }
+}
+
+
+main{
+  width: 100vw;
+  height: 100vh;
+  
+}
+
+.box{
+  height: 52px;
+  
+}
+
+.bg-image {
+  width: 100%;
+  height: 200px;
+  &.image{
+    background-image: url('../assets/images/bg-mobile-light.jpg');
+    background-repeat: no-repeat;
+  }
+}
+
+.container{
+  width: 328px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.panel{
+  position: relative;
+  top: -170px
+}
+
+.header{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  color: $color-white;
+  h1{
+    letter-spacing: 1rem;
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+  .action-style{
+    background-image: url('../assets/images/icon-moon.svg');
+    width: 26px;
+    height: 26px;
+  }
+}
+
+.input{
+  background-color: $bg-light-component;
+  border-radius: 4px;
+  margin: 24px 0 14px 0;
+  display: flex;
+  position: relative;
+  align-items: center;  
+  input[type='text']{
+    
+    
+    margin: 0 16px 0 50px;
+    width: 100%;
+    
+  } 
+}
+.tasks{
+  min-height: 384px;
+  background-color: $bg-light-component;
+  .task{
+    background-color: $bg-light-component;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    &.disabled{
+      display: none; 
+    }
+    &.completed p{
+      text-decoration: line-through;
+    }
+    &:first-child{
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
+    }
+    
+    p{
+      //width: 200px;
+      width: 100%;
+      margin: 0 40px 0 50px;
+    }
+  }
+}
+.footer{
+    .actions{
+      display: grid;
+      grid-template-columns: [main-start] 1fr [content-medium]  1fr [main-end];
+      grid-template-rows: [main-start] 52px [content-medium]  70px [main-end];
+
+      .box{
+        background-color: $bg-light-component;
+        border-radius: 4px;
+        &:first-child{
+          border-radius: 0px;
+          border-bottom-left-radius: 4px;
+        }
+        &:last-child{
+          border-radius: 0px;
+          border-bottom-right-radius: 4px;
+        }
+      }
+      button{
+        padding: 0 12px;
+        &.active{
+          color: $bg-color-blue;
+          font-weight: bold;
+        }
+      }
+      .box1,.box2,.box3{
+        display: flex;
+        justify-items: center;
+      }
+      .box1 {
+        grid-column: main-start / content-medium;
+        grid-row: main-start / content-medium;
+        justify-content: flex-start;
+        padding-left: 12px;
+      }
+      .box2 {
+        align-self: end;
+        grid-column: main-start/main-end;
+        grid-row: content-medium/main-end;
+        justify-content: center;
+        
+      }
+      .box3 {
+        grid-column-start: content-medium / main-end;
+        grid-row-start: main-start / content-medium;
+        justify-content: flex-end;
+        padding-right: 12px;
+      }
+    }
+}
+
+main.dark{
+    background-color: $bg-dark;
+  .bg-image.image{
+    background-image: url('../assets/images/bg-mobile-dark.jpg');
+  }
+  .header .action-style{
+      background-image: url('../assets/images/icon-sun.svg');
+  }
+  .input{
+    background-color: $bg-dark-component; 
+    input{
+      color: $color-light-grey
+    }
+  }
+  .tasks{
+    background-color: $bg-dark-component;
+    .task{
+      background-color: $bg-dark-component;
+      color: $color-light-grey;
+    }
+  }
+  .footer{
+    font-weight: 700;
+    .box{
+      background-color: $bg-dark-component;
+      button{
+        color: $color-light-grey;
+        &.active{
+          color: $bg-color-blue;
+          font-weight: bold;
+        }
+        
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 375px){
+  .bg-image{
+    height: 300px;
+    background-size: cover;
+    &.image{
+     background-image: url('../assets/images/bg-desktop-light.jpg');  
+    }
+  }
+  main.dark{
+    .bg-image.image{
+      background-image: url('../assets/images/bg-desktop-dark.jpg');
+    }
+  }
+ 
+}
+@media only screen and (min-width: 600px){
+  .box{
+    height: 64px;
+  }
+  .container{
+    width: 542px;  
+  }
+  .panel{
+    top: -240px
+  }
+  .header{
+    h1{
+      font-size: 2.5rem;
+      
+    }
+  }
+  .input{
+    margin: 32px 0 24px 0; 
+    input[type='text']{
+      font-size: 1rem;
+      margin: 0 16px 0 70px;
+      
+    }
+  }
+  .tasks{
+    .task{
+      justify-content: flex-start;
+      p{
+        margin: 0 40px 0 70px;
+      }
+      button.circle.right{
+        display: none;
+      }
+      &:hover button.circle.right{
+        display: inline-block;
+      }
+    }
+  }
+  .footer{
+  
+    .actions{
+      display: grid;
+      grid-template-columns: [main-start] 2fr [content-left]  3fr [content-right] 2fr [main-end];
+      grid-template-rows: [main-start] 52px  [main-end];
+      .box1 {
+        grid-column: main-start/content-left;
+        grid-row: main-start/content-end;
+      }
+      .box2 {
+        align-self: auto;
+        grid-column: content-left / content-right;
+        grid-row: main-start/main-end;
+      }
+      .box3 {
+        
+        grid-column: content-right / main-end;
+        grid-row: main-start / main-end;
+      }
+    }
+  }
+
+}
