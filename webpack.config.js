@@ -20,7 +20,7 @@ module.exports = {
       {
         test: /\.scss$/,
         use: [
-          // create css file in production mode or inject into file dev mode
+          // Create css file in production mode or inject into html devmode
           devMode
             ? 'style-loader'
             : {

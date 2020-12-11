@@ -51,15 +51,17 @@ class RenderTodos extends AppTodo {
     task.classList.add('task')
     task.classList.add('box')
     task.classList.add('active')
-    task.setAttribute('rowid', item.id)
+    task.setAttribute('id', `rowid-${item.id}`)
     const btn = document.createElement('button')
     btn.classList.add('circle')
     btn.classList.add('left')
+    btn.setAttribute('aria-label', 'buton for set complete')
     const ii = document.createElement('i')
     btn.appendChild(ii)
     const btnClose = document.createElement('button')
     btnClose.classList.add('circle')
     btnClose.classList.add('right')
+    btnClose.setAttribute('aria-label', 'buton for delete task')
     const iii = document.createElement('i')
     btnClose.appendChild(iii)
     const p = document.createElement('p')
@@ -75,19 +77,19 @@ class RenderTodos extends AppTodo {
   setCompleted (id, evt) {
     if (this.isCompleted(id)) {
       this.markAsActive(id)
-      document.querySelector(`[rowid="${id}"] `).classList.remove('completed')
-      document.querySelector(`[rowid="${id}"] `).classList.add('active')
+      document.querySelector(`#rowid-${id}`).classList.remove('completed')
+      document.querySelector(`#rowid-${id}`).classList.add('active')
     } else {
       this.markAsCompleted(id)
-      document.querySelector(`[rowid="${id}"] `).classList.add('completed')
-      document.querySelector(`[rowid="${id}"] `).classList.remove('active')
+      document.querySelector(`#rowid-${id}`).classList.add('completed')
+      document.querySelector(`#rowid-${id}`).classList.remove('active')
     }
     this.setstatus()
   }
 
   deleteRow (id) {
     this.deleteTask(id)
-    document.querySelector(`[rowid="${id}"] `).remove()
+    document.querySelector(`#rowid-${id}`).remove()
     this.setstatus()
   }
 

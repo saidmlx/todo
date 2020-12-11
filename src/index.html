@@ -13,11 +13,12 @@
             <div class="panel">
                 <section class="header box ">
                     <h1>TODO</h1>
-                    <button class="action-style"></button>
+                    <button name="switchMode" id="switchMode" class="action-style"></button>
                 </section>
                 <section class="input box border-blue">
-                    <button class="circle input-item left"></button>
-                    <input type="text" class="border-red" id="textCaption" placeholder="Create a new todo">
+                    <button name="inputStatus" id="inputStatus" class="circle input-item left"></button>
+                    
+                    <input type="text" name="textCaption" id="textCaption" aria-label="text caption" class="border-red"  placeholder="Create a new todo">
                 </section>
 
                 <section class="tasks border-blue">
@@ -28,9 +29,9 @@
                             <button class="btn-items-left">5 items left</button>
                         </div>
                         <div class="box box2 border-green">
-                            <button href="#" class="btn-all active">All</button>
-                            <button href="#" class="btn-active">Active</button>
-                            <button href="#" class="btn-completed">Complete</button>
+                            <button class="btn-all active">All</button>
+                            <button class="btn-active">Active</button>
+                            <button class="btn-completed">Complete</button>
                         </div>
                         <div class="box box3 border-green">
                             
