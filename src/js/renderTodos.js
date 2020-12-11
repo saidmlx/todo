@@ -96,7 +96,7 @@ class RenderTodos extends AppTodo {
   }
 
   setstatus () {
-    const actives = this.list.reduce((acum, current) => {return current.status === statusInterface.ACTIVE ? acum + 1 : acum }, 0)
+    const actives = this.list.reduce((acum, current) => { return current.status === statusInterface.ACTIVE ? acum + 1 : acum }, 0)
     document.querySelector('.btn-items-left').innerText = `${actives} items left`
   }
 

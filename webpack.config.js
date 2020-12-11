@@ -1,8 +1,7 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-
-
+const devMode = process.env.NODE_ENV !== 'production'
 
 module.exports = {
   devServer: {
@@ -21,8 +20,15 @@ module.exports = {
       {
         test: /\.scss$/,
         use: [
-          // Creates `style` nodes from JS strings
-          'style-loader',
+          // create css file in production mode or inject into file dev mode
+          devMode
+            ? 'style-loader'
+            : {
+                loader: MiniCssExtractPlugin.loader,
+                options: {
+                  publicPath: '../'
+                }
+              },
           // Translates CSS into CommonJS
           'css-loader',
           // Compiles Sass to CSS
@@ -44,9 +50,10 @@ module.exports = {
         use: {
           loader: 'url-loader',
           options: {
-            limit: 900,
-            publicPath: '/'
-
+            limit: 10000,
+            options: {
+              publicPath: '../'
+            }
           }
         }
       },

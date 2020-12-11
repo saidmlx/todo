@@ -32,7 +32,7 @@ button{
     outline: none;
   }
 }
-input[type='text']{
+#textCaption{
   border: 0;
   background-color: transparent;
   &:focus{
@@ -154,7 +154,7 @@ main{
   display: flex;
   position: relative;
   align-items: center;  
-  input[type='text']{
+  #textCaption{
     
     
     margin: 0 16px 0 50px;
@@ -310,7 +310,7 @@ main.dark{
   }
   .input{
     margin: 32px 0 24px 0; 
-    input[type='text']{
+    #textCaption{
       font-size: 1rem;
       margin: 0 16px 0 70px;
       
