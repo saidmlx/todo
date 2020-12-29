@@ -1,6 +1,6 @@
 'use strict'
 const test = require('ava')
-import AppTodo from '../src/js/appTodo' // eslint-disable-line
+import AppTodo from '../src/js/appTodos' // eslint-disable-line
 import statusInterface from '../src/js/statusInterface' // eslint-disable-line
 
 test.before(t => {})
